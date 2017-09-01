@@ -1,52 +1,118 @@
-LineageOS
-===========
+# NucleaRom #
+[<center><img src="https://raw.githubusercontent.com/OrdenKrieger/NucleaROM_pictures/2a0b4d83cb7d226d68da925dc292fd835cf03e10/Github_banner.png" height="100%" width="100%;"/></center>](https://github.com/NucleaRom)
 
-Submitting Patches
-------------------
+## Setting up your machine ##
 
-Patches are always welcome!  Please submit your patches via LineageOS Gerrit.
-You can do this by using these commands:
+You must be running a 64-bit Linux distribution (Google recommends using 
+[Ubuntu](http://www.ubuntu.com/download/desktop) for this).
+You also must have installed some packages to build NucleaRom.
 
-    (From root android directory)
-    . build/envsetup.sh
-    (Go to repo you are patching, make your changes and commit)
-    lineagegerrit <for(new)/changes(patch set)> <branch/change-id>
+### To build NucleaRom, you’ll need: ###
 
-    repo start lineage-15.1 .
-    (Make your changes and commit)
-    repo upload .
+```bash
+sudo apt-get update && sudo apt-get install bc bison build-essential curl flex g++-multilib
+gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev
+libesd0-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2
+libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
+```
 
-Note: "." means the current directory
-For more help on using this tool, use this command: `repo help upload`
+#### For Ubuntu versions older than 16.04 (xenial), substitute: ####
 
-Make your changes and commit with a detailed message, starting with what you are working with (i.e. "vision: Update Kernel")
-Commit your patches in a single commit. Squash multiple commits using this command: `git rebase -i HEAD~<# of commits>`
+```bash
+libwxgtk3.0-dev → libwxgtk2.8-dev
+```
 
-To view the status of your and others' patches, visit [LineageOS Code Review](https://review.lineageos.org/)
+### Java ###
 
+NucleaRom requires OpenJDK 1.8 [How do I install OpenJDK 1.8?](https://wiki.ubuntuusers.de/Java/Installation/OpenJDK/)
 
-Getting Started
----------------
+* (Note: Some linux distribution already have this java version included.)
 
-To get started with Android/LineageOS, you'll need to get
-familiar with [Git and Repo](https://source.android.com/source/using-repo.html).
+## Getting the source ##
 
-To initialize your local repository using the LineageOS trees, use a command like this:
+[Repo](http://source.android.com/source/developing.html) is a tool provided by Google that
+simplifies using [Git](http://git-scm.com/book) in the context of the Android source.
 
-    repo init -u git://github.com/LineageOS/android.git -b lineage-15.1
+### Installing Repo ###
 
-Then to sync up:
+```bash
+# Make a directory where Repo will be stored and add it to the path
+$ mkdir -p ~/.bin
+$ PATH=~/.bin:$PATH
 
-    repo sync
+# Download Repo itself
+$ curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
 
-Please see the [LineageOS Wiki](https://wiki.lineageos.org/) for building instructions.
+# Make Repo executable
+$ chmod a+x ~/.bin/repo
+```
 
+### Initializing Repo ###
 
-Buildbot
---------
+```bash
+# Create a directory where the source will be stored.
+# Note: You can name the folder to whatever you want, just replace *NucleaRom*
+# with the name you intended  to use
+$ mkdir -p ~/NucleaRom
+$ cd ~/NucleaRom
 
-All supported devices are built weekly and periodically as changes are committed to ensure the source trees remain buildable.
+# Install the NucleaRom Repo in the created directory
+$ repo init -u git://github.com/NucleaRom/android.git -b nuclear-o
+```
 
-You can view the current build statuses at [LineageOS Jenkins](https://jenkins.lineageos.org/)
+### Download the source code ###
 
-Builds produced weekly by the buildbot can be downloaded from [LineageOS downloads](https://download.lineageos.org/)
+The [repo sync](https://source.android.com/source/downloading) command is used to update
+the latest source code from NucleaRom and Google. Remember it, as you may want to do it 
+every few days to keep your code base fresh and up-to-date.
+
+```bash
+# This may take a while, depending on your internet speed.
+#
+# The -j# option specifies the number of concurrent download threads to run.
+# 4 threads is a good number for most internet connections.
+# You may need to adjust this value if you have a particularly slow connection.
+$ repo sync --force-sync -j4
+```
+
+## Building ##
+
+### Device-specific code ###
+
+To build NucleaRom you’ll need an existing device tree, kernel and proprietary blobs. 
+If your device already receive official LineageOS builds you can grab the device tree 
+and kernel here [LineageOS Github](https://github.com/LineageOS) and the proprietary 
+blobs here [TheMuppets Github](https://github.com/themuppets).
+
+### Speed up the build ###
+
+Make use of [ccache](https://ccache.samba.org/) if you want to speed up subsequent
+builds by running:
+
+```bash
+$ echo "export USE_CCACHE=1" >> ~/.bashrc
+$ ~/NucleaRom/prebuilts/misc/linux-x86/ccache/ccache -M 50G
+```
+
+* Where 50G corresponds to 50GB of cache. This needs to be run once. Anywhere from
+25GB-100GB will result in very noticeably increased build speeds (for instance, a typical 
+1hr build time can be reduced to 20min). If you’re only building for one device,
+25GB-50GB is fine. If you plan to build for several devices that do not share the 
+same kernel source, aim for 75GB-100GB. This space will be permanently occupied 
+on your drive, so take this into consideration.See more information about ccache 
+on Google’s [Android build environment initialization page](https://source.android.com/source/initializing.html#setting-up-ccache).
+
+### Last step ###
+
+```bash
+$ cd ~/NucleaRom
+$ . build/envsetup.sh && brunch lineage_*my-device*-userdebug
+```
+
+## Success! What’s next? ##
+
+You’ve done it! Now you can share your builds wherever you want.
+(Note: If you have done more then 5 stable builds for your device you have the
+chance to become an official maintainer from NucleaRom for your device.
+Join our NucleaRom Support group on [Telegram](https://t.me/NucleaRomSupport)
+for questions related to this or other topics.)
