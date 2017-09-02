@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!--To Remove-->
+  <remove-project name="LineageOS/android_frameworks_base" />
+  <remove-project name="LineageOS/android" />
+  <remove-project name="LineageOS/android_packages_apps_Settings" />
+  <remove-project name="LineageOS/android_vendor_lineage" />
+
+  <!--Nuclear Repos-->
+  <project path="build/make" name="NucleaRom/android_build" groups="pdk" revision="nuclear-o" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="frameworks/base" name="NucleaRom/android_frameworks_base" groups="pdk-cw-fs,pdk-fs" revision="nuclear-o" />
+  <project path="android" name="NucleaRom/android" revision="nuclear-o" />
+  <project path="packages/apps/Settings" name="NucleaRom/android_packages_apps_Settings" groups="pdk-fs" revision="nuclear-o" />
+  <project path="vendor/lineage" name="NucleaRom/android_vendor_lineage" revision="nuclear-o" />
+
+</manifest>
