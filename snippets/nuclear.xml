@@ -13,5 +13,6 @@
   <project path="packages/apps/Settings" name="NucleaRom/android_packages_apps_Settings" groups="pdk-fs" revision="nuclear-p" />
   <project path="vendor/lineage" name="NucleaRom/android_vendor_lineage" revision="nuclear-p" />
   <project path="lineage-sdk" name="NucleaRom/android_lineage-sdk" revision="nuclear-p" />
+  <project path="packages/apps/NuclearSettings" name="NucleaRom/android_packages_apps_NuclearSettings" revision="nuclear-p" />
 
 </manifest>
