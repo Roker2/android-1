@@ -24,6 +24,7 @@
   </project>
   <project path="lineage-sdk" name="NucleaRom/android_lineage-sdk" revision="nuclear-o" />
   <project path="frameworks/base" name="NucleaRom/android_frameworks_base" groups="pdk-cw-fs,pdk-fs" revision="nuclear-o" />
+  <project path="frameworks/opt/slimrecent" name="NucleaRom/frameworks_opt_slimrecent" revision="nuclear-o" />
   <project path="android" name="NucleaRom/android" revision="nuclear-o" />
   <project path="packages/apps/Settings" name="NucleaRom/android_packages_apps_Settings" groups="pdk-fs" revision="nuclear-o" />
   <project path="vendor/nr" name="NucleaRom/android_vendor_lineage" revision="nuclear-o" />
