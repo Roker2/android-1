@@ -4,6 +4,7 @@
   <remove-project name="LineageOS/android_frameworks_base" />
   <remove-project name="LineageOS/android" />
   <remove-project name="LineageOS/android_packages_apps_Settings" />
+  <remove-project name="LineageOS/android_packages_apps_Dialer" />
   <remove-project name="LineageOS/android_vendor_lineage" />
   <remove-project name="LineageOS/android_build_soong" />
   <remove-project name="LineageOS/android_lineage-sdk" />
@@ -27,6 +28,7 @@
   <project path="frameworks/opt/slimrecent" name="NucleaRom/frameworks_opt_slimrecent" revision="nuclear-o" />
   <project path="android" name="NucleaRom/android" revision="nuclear-o" />
   <project path="packages/apps/Settings" name="NucleaRom/android_packages_apps_Settings" groups="pdk-fs" revision="nuclear-o" />
+  <project path="packages/apps/Dialer" name="NucleaRom/android_packages_apps_Dialer" groups="pdk-fs" revision="nuclear-o" />
   <project path="vendor/nr" name="NucleaRom/android_vendor_lineage" revision="nuclear-o" />
   <project path="packages/apps/NuclearSettings" name="NucleaRom/android_packages_apps_NuclearSettings" revision="nuclear-o" />
 
