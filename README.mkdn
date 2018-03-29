@@ -106,7 +106,7 @@ on Google’s [Android build environment initialization page](https://source.and
 
 ```bash
 $ cd ~/NucleaRom
-$ . build/envsetup.sh && brunch lineage_*my-device*-userdebug
+$ . build/envsetup.sh && brunch nr_*my-device*-userdebug
 ```
 
 ## Success! What’s next? ##
