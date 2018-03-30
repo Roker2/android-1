@@ -8,6 +8,7 @@
   <remove-project name="LineageOS/android_packages_apps_Dialer" />
   <remove-project name="LineageOS/android_packages_apps_PackageInstaller" />
   <remove-project name="LineageOS/android_packages_apps_Settings" />
+  <remove-project name="LineageOS/android_system_sepolicy" />
   <remove-project name="LineageOS/android_vendor_lineage" />
   
   <!--Nuclear Repos-->
@@ -32,6 +33,7 @@
   <project path="packages/apps/PackageInstaller" name="NucleaRom/android_packages_apps_PackageInstaller" groups="pdk-fs" revision="nuclear-o" />
   <project path="packages/apps/NuclearSettings" name="NucleaRom/android_packages_apps_NuclearSettings" revision="nuclear-o" />
   <project path="packages/apps/Settings" name="NucleaRom/android_packages_apps_Settings" groups="pdk-fs" revision="nuclear-o" />
+  <project path="system/sepolicy" name="NucleaRom/android_system_sepolicy" revision="nuclear-o" />
   <project path="vendor/nr" name="NucleaRom/android_vendor_lineage" revision="nuclear-o" />
 
 </manifest>
