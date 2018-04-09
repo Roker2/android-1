@@ -35,5 +35,7 @@
   <project path="packages/apps/Settings" name="NucleaRom/android_packages_apps_Settings" groups="pdk-fs" revision="nuclear-o" />
   <project path="system/sepolicy" name="NucleaRom/android_system_sepolicy" revision="nuclear-o" />
   <project path="vendor/nr" name="NucleaRom/android_vendor_lineage" revision="nuclear-o" />
+  <project path="external/DUtils" name="NucleaRom/android_external_DUtils" revision="nuclear-o" />
+  <project path="packages/apps/DUI" name="NucleaRom/android_packages_apps_DUI" revision="nuclear-o" />
 
 </manifest>
